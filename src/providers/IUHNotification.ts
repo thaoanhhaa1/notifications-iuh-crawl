@@ -12,7 +12,7 @@ export interface INotification {
 }
 
 function IUHInformation() {
-    const crawl = async (url: string) => {
+    const crawl = async (url: string, dateParam?: string) => {
         const response = await fetch(url);
         const data = await response.text();
 
@@ -29,7 +29,7 @@ function IUHInformation() {
 
             const formattedDate = formatDate(now, 'DD-MM-YYYY');
 
-            if (date !== formattedDate) {
+            if (date !== (dateParam || formattedDate)) {
                 return;
             }
 

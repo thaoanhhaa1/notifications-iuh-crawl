@@ -21,6 +21,14 @@ app.get('/notifications', async (_req: Request, res: Response) => {
     res.json(await notification.crawl('https://iuh.edu.vn/vi/thong-bao-fi20'));
 });
 
+app.get('/notifications/:date', async (req: Request, res: Response) => {
+    const date = req.params.date;
+
+    res.json(
+        await notification.crawl('https://iuh.edu.vn/vi/thong-bao-fi20', date),
+    );
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
